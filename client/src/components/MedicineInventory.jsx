@@ -1,17 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import './MedicineInventory.css'; // Use for custom scrollbar styles
+import React, { useState, useEffect } from "react";
+import "./MedicineInventory.css"; // Use for custom scrollbar styles
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const MedicineInventory = () => {
+  const [otpPage, setOtpPage] = useState(false);
   // Demo data for medicines inventory
   const [inventory, setInventory] = useState([
-    { id: 1, name: 'Paracetamol', stock: 50, minStock: 20, expiry: '2025-01-01' },
-    { id: 2, name: 'Ibuprofen', stock: 5, minStock: 10, expiry: '2023-12-31' },
-    { id: 3, name: 'Insulin', stock: 30, minStock: 10, expiry: '2024-03-15' },
-    { id: 4, name: 'Cough Syrup', stock: 100, minStock: 50, expiry: '2026-05-10' },
+    {
+      id: 1,
+      name: "Paracetamol",
+      stock: 50,
+      minStock: 20,
+      expiry: "2025-01-01",
+    },
+    { id: 2, name: "Ibuprofen", stock: 5, minStock: 10, expiry: "2023-12-31" },
+    { id: 3, name: "Insulin", stock: 30, minStock: 10, expiry: "2024-03-15" },
+    {
+      id: 4,
+      name: "Cough Syrup",
+      stock: 100,
+      minStock: 50,
+      expiry: "2026-05-10",
+    },
     // Add more data to demonstrate scrolling
-    { id: 5, name: 'Aspirin', stock: 25, minStock: 5, expiry: '2024-12-12' },
-    { id: 6, name: 'Vitamin C', stock: 40, minStock: 15, expiry: '2025-07-01' },
-    { id: 7, name: 'Amoxicillin', stock: 15, minStock: 10, expiry: '2023-10-01' },
+    { id: 5, name: "Aspirin", stock: 25, minStock: 5, expiry: "2024-12-12" },
+    { id: 6, name: "Vitamin C", stock: 40, minStock: 15, expiry: "2025-07-01" },
+    {
+      id: 7,
+      name: "Amoxicillin",
+      stock: 15,
+      minStock: 10,
+      expiry: "2023-10-01",
+    },
   ]);
 
   useEffect(() => {
@@ -19,9 +40,11 @@ const MedicineInventory = () => {
   }, [inventory]);
 
   const checkInventory = () => {
-    const itemsToReorder = inventory.filter(item => {
+    const itemsToReorder = inventory.filter((item) => {
       const needsReorder = item.stock <= item.minStock;
-      const nearExpiry = new Date(item.expiry) <= new Date(new Date().setMonth(new Date().getMonth() + 6));
+      const nearExpiry =
+        new Date(item.expiry) <=
+        new Date(new Date().setMonth(new Date().getMonth() + 6));
       return needsReorder || nearExpiry;
     });
 
@@ -30,8 +53,22 @@ const MedicineInventory = () => {
     }
   };
 
-  const triggerReorder = (item) => {
-    alert(`Reorder placed for ${item.name}!`);
+  const triggerReorder = async (items) => {
+    toast.success(`Reorder placed for ${items.name}!`);
+    // setOtpPage(true);
+    console.log(items);
+    // api call to send email
+    const config = {
+      url: "http://localhost:5000/api/auth/sendotp",
+      data: items,
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const response = await axios(config);
+
+    console.log(response.data);
   };
 
   return (
@@ -50,14 +87,22 @@ const MedicineInventory = () => {
             </tr>
           </thead>
           <tbody>
-            {inventory.map(item => {
+            {inventory.map((item) => {
               const needsReorder = item.stock <= item.minStock;
-              const nearExpiry = new Date(item.expiry) <= new Date(new Date().setMonth(new Date().getMonth() + 6));
+              const nearExpiry =
+                new Date(item.expiry) <=
+                new Date(new Date().setMonth(new Date().getMonth() + 6));
 
               return (
                 <tr
                   key={item.id}
-                  className={`hover:bg-gray-100 ${needsReorder ? 'bg-red-50' : nearExpiry ? 'bg-yellow-50' : ''}`}
+                  className={`hover:bg-gray-100 ${
+                    needsReorder
+                      ? "bg-red-50"
+                      : nearExpiry
+                      ? "bg-yellow-50"
+                      : ""
+                  }`}
                 >
                   <td className="px-4 py-2">{item.name}</td>
 
@@ -77,7 +122,11 @@ const MedicineInventory = () => {
 
                   <td className="px-4 py-2">{item.expiry}</td>
                   <td className="px-4 py-2">
-                    {needsReorder ? 'Low Stock' : nearExpiry ? 'Near Expiry' : 'Sufficient Stock'}
+                    {needsReorder
+                      ? "Low Stock"
+                      : nearExpiry
+                      ? "Near Expiry"
+                      : "Sufficient Stock"}
                   </td>
                   <td className="px-4 py-2">
                     {(needsReorder || nearExpiry) && (
@@ -95,6 +144,7 @@ const MedicineInventory = () => {
           </tbody>
         </table>
       </div>
+      {otpPage ? <div>OPT</div> : ""}
     </div>
   );
 };
