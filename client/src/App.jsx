@@ -9,6 +9,8 @@ import BedAvailabilityPage from "./pages/BedAvailabilityPage";
 import MedicineInventoryPage from "./pages/MedicineInventoryPage";
 import QueueStatusPage from "./pages/QueueStatusPage";
 import Header from "./components/header";
+import Login from "./components/authentication/Login";
+import Register from "./components/authentication/Register";
 
 function App() {
   return (
@@ -24,9 +26,8 @@ function App() {
         <Route path="/queue-status" element={<QueueStatusPage />} />
         <Route path="/appointments" element={<AppointmentSchedulingPage />} />
         <Route path="/medicine-inventory" element={<MedicineInventoryPage />} />
-        {/* Uncomment these lines if you have these pages */}
-        {/* <Route path="/health-records" element={<HealthRecordsPage />} /> */}
-        {/* <Route path="/remote-consultation" element={<RemoteConsultationPage />} /> */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
   );
