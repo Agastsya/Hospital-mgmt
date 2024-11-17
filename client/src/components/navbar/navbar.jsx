@@ -15,7 +15,7 @@ const Navbar = () => {
             <div className="flex items-center">
               <img src={Hospital} alt="Logo" className="h-10 w-10 mr-3" />
               <span className="text-2xl font-bold text-primary">
-              <a href="/Dashboard">Hospital Dashboard</a>
+                <a href="/Dashboard">Hospital Dashboard</a>
               </span>
             </div>
           </div>
@@ -39,8 +39,12 @@ const Navbar = () => {
               About
             </Link>
             <div className="hidden md:flex items-center space-x-2">
-              <Button variant="ghost">Login</Button>
-              <Button variant="outline">Register</Button>
+              <Link to="/login">
+                <Button variant="ghost">Login</Button>
+              </Link>
+              <Link to="/register">
+                <Button variant="outline">Register</Button>
+              </Link>
             </div>
           </div>
           <div className="flex items-center sm:hidden">
