@@ -3,18 +3,22 @@ const connectDB = require("./config/db");
 const cors = require("cors");
 require("dotenv").config();
 const AuthRouter = require("./routes/auth.routes.js");
-const PatientRouter = require("./routes/patientRoutes.js");
+const PateintRouter = require("./routes/patientRoutes.js");
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 
 connectDB();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["*", "http://localhost:5173"],
+  })
+);
 app.use(express.json({ extended: false }));
 
-app.use("/api/patients", PatientRouter);
+app.use("/api/patients", PateintRouter);
 
 app.use("/api/auth", AuthRouter);
 
