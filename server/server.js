@@ -5,7 +5,7 @@ require("dotenv").config();
 const AuthRouter = require("./routes/auth.routes.js");
 const PatientRouter = require("./routes/patientRoutes.js");
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 const app = express();
 
