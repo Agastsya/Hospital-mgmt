@@ -5,7 +5,6 @@ const router = express.Router();
 
 // Admin login route
 router.post("/login", async (req, res) => {
-  console.log("Request Recieved");
   const { email, password } = req.body;
 
   if (!email) {

@@ -45,7 +45,7 @@ function Login() {
     <>
       <div className="hero-section">
         <div className="photo">
-          <img src={"/images/loginSVG.svg"} alt="Register" />
+          <img src={"/images/loginSVGG.svg"} alt="Register" />
         </div>
         <div className="section">
           <h1 className="register-heading">

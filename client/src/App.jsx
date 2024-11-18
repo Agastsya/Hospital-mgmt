@@ -12,6 +12,7 @@ import Header from "./components/header";
 import Login from "./components/authentication/Login";
 import Register from "./components/authentication/Register";
 import { Toaster } from "react-hot-toast";
+import Contact from "./components/Contactus/Contact";
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
           <Route path="/bed-availability" element={<BedAvailabilityPage />} />
           <Route path="/queue-status" element={<QueueStatusPage />} />
           <Route path="/appointments" element={<AppointmentSchedulingPage />} />
+          <Route path="/contact" element={<Contact />} />
+
           <Route
             path="/medicine-inventory"
             element={<MedicineInventoryPage />}

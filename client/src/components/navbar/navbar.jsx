@@ -15,7 +15,7 @@ const Navbar = () => {
             <div className="flex items-center">
               <img src={Hospital} alt="Logo" className="h-10 w-10 mr-3" />
               <span className="text-2xl font-bold text-primary">
-                <a href="/Dashboard">Hospital Dashboard</a>
+                <a href="/">Hospital Dashboard</a>
               </span>
             </div>
           </div>
