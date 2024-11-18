@@ -11,25 +11,32 @@ import QueueStatusPage from "./pages/QueueStatusPage";
 import Header from "./components/header";
 import Login from "./components/authentication/Login";
 import Register from "./components/authentication/Register";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Header />
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/home" element={<Dashboard />} />
-        <Route path="/addpatients" element={<AddPatient />} />
-        <Route path="/patients" element={<PatientList />} />
-        <Route path="/bed-availability" element={<BedAvailabilityPage />} />
-        <Route path="/queue-status" element={<QueueStatusPage />} />
-        <Route path="/appointments" element={<AppointmentSchedulingPage />} />
-        <Route path="/medicine-inventory" element={<MedicineInventoryPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-    </Router>
+    <>
+      <Router>
+        <Navbar />
+        <Header />
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/home" element={<Dashboard />} />
+          <Route path="/addpatients" element={<AddPatient />} />
+          <Route path="/patients" element={<PatientList />} />
+          <Route path="/bed-availability" element={<BedAvailabilityPage />} />
+          <Route path="/queue-status" element={<QueueStatusPage />} />
+          <Route path="/appointments" element={<AppointmentSchedulingPage />} />
+          <Route
+            path="/medicine-inventory"
+            element={<MedicineInventoryPage />}
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </Router>
+      <Toaster />
+    </>
   );
 }
 

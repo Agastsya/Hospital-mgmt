@@ -13,6 +13,7 @@ function Register() {
     password: "",
   });
   const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -21,6 +22,7 @@ function Register() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     axios
       .post("http://localhost:5000/api/auth/register", {
         name: formData.username,
@@ -35,6 +37,9 @@ function Register() {
       .catch((err) => {
         console.log(err.res.data);
         toast.error(err.res.data.err);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -63,6 +68,7 @@ function Register() {
             <label>Email</label>
             <br />
             <input
+              disabled={isLoading}
               type="email"
               placeholder="Email"
               id="email"
@@ -74,6 +80,7 @@ function Register() {
             <label>Password</label>
             <br />
             <input
+              disabled={isLoading}
               type="password"
               placeholder="Password"
               id="password"
@@ -82,7 +89,7 @@ function Register() {
               onChange={handleInputChange}
             />
             <br />
-            <button type="submit" className="button">
+            <button disabled={isLoading} type="submit" className="button">
               Register
             </button>
           </form>

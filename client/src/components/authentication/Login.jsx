@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -20,6 +21,7 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     axios
       .post("http://localhost:5000/api/auth/login", {
         email: formData.email,
@@ -33,6 +35,9 @@ function Login() {
       .catch((err) => {
         console.log(err.response.data);
         toast.error(err.response.data.err);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -50,6 +55,7 @@ function Login() {
             <label>Email</label>
             <br />
             <input
+              disabled={isLoading}
               type="email"
               placeholder="Email"
               id="email"
@@ -61,6 +67,7 @@ function Login() {
             <label>Password</label>
             <br />
             <input
+              disabled={isLoading}
               type="password"
               placeholder="Password"
               id="password"
@@ -69,7 +76,7 @@ function Login() {
               onChange={handleInputChange}
             />
             <br />
-            <button type="submit" className="button">
+            <button disabled={isLoading} type="submit" className="button">
               Login
             </button>
           </form>
