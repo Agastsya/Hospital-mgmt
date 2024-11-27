@@ -1,21 +1,36 @@
-import React, { useState } from 'react';
-import Calendar from 'react-calendar';
-import '../components/DoctorSchedule.css'; // Import the custom CSS file
+import { useState } from "react";
+import Calendar from "react-calendar";
+import "../components/DoctorSchedule.css"; // Import the custom CSS file
 
 const DoctorSchedule = () => {
   const [date, setDate] = useState(new Date());
   const [appointments, setAppointments] = useState([]);
-  const [selectedDoctor, setSelectedDoctor] = useState('');
-  const [appointmentDetails, setAppointmentDetails] = useState('');
+  const [selectedDoctor, setSelectedDoctor] = useState("");
+  const [appointmentDetails, setAppointmentDetails] = useState("");
 
   // Dummy data with availability status
   const doctors = [
-    { id: 1, name: 'Dr. Smith', availability: { '2024-09-15': 'available', '2024-09-16': 'occupied' } },
-    { id: 2, name: 'Dr. Johnson', availability: { '2024-09-15': 'on leave' } },
+    {
+      id: 1,
+      name: "Dr. Ankit Bhatia",
+      availability: { "2024-09-15": "available", "2024-09-16": "occupied" },
+    },
+    {
+      id: 2,
+      name: "Dr. Shyam Singh",
+      availability: { "2024-09-15": "on leave" },
+    },
+    {
+      id: 3,
+      name: "Dr. Maninder Kumar",
+      availability: { "2024-09-15": "Occupied" },
+    },
   ];
 
-  const selectedDoctorData = doctors.find(doc => doc.name === selectedDoctor);
-  const doctorAvailability = selectedDoctorData ? selectedDoctorData.availability : {};
+  const selectedDoctorData = doctors.find((doc) => doc.name === selectedDoctor);
+  const doctorAvailability = selectedDoctorData
+    ? selectedDoctorData.availability
+    : {};
 
   const handleDateChange = (date) => {
     setDate(date);
@@ -24,19 +39,26 @@ const DoctorSchedule = () => {
   const handleBookAppointment = () => {
     if (selectedDoctor && appointmentDetails) {
       const appointmentDate = date.toDateString();
-      setAppointments([...appointments, { doctor: selectedDoctor, date: appointmentDate, details: appointmentDetails }]);
-      alert('Appointment booked successfully!');
-      setSelectedDoctor('');
-      setAppointmentDetails('');
+      setAppointments([
+        ...appointments,
+        {
+          doctor: selectedDoctor,
+          date: appointmentDate,
+          details: appointmentDetails,
+        },
+      ]);
+      alert("Appointment booked successfully!");
+      setSelectedDoctor("");
+      setAppointmentDetails("");
     } else {
-      alert('Please select a doctor and provide details.');
+      alert("Please select a doctor and provide details.");
     }
   };
 
   const tileClassName = ({ date }) => {
-    const dateString = date.toISOString().split('T')[0]; // Format date to YYYY-MM-DD
-    if (appointments.find(app => app.date === date.toDateString())) {
-      return 'calendar-tile booked'; // Color for booked appointments
+    const dateString = date.toISOString().split("T")[0]; // Format date to YYYY-MM-DD
+    if (appointments.find((app) => app.date === date.toDateString())) {
+      return "calendar-tile booked"; // Color for booked appointments
     }
     const status = doctorAvailability[dateString];
     return status ? `calendar-tile ${status}` : null;
@@ -44,8 +66,16 @@ const DoctorSchedule = () => {
 
   return (
     <div className="doctor-schedule-container">
-      <h2>Doctor Availability and Scheduling</h2>
-
+      <h2
+        style={{
+          color: "white",
+          fontSize: "2.5rem",
+          textAlign: "center",
+          margin: "20px 0",
+        }}
+      >
+        Doctor Availability and Scheduling
+      </h2>
       {/* Doctor Selection */}
       <div className="doctor-selection">
         <label htmlFor="doctor">Select Doctor:</label>

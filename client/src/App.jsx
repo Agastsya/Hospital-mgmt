@@ -13,6 +13,7 @@ import Login from "./components/authentication/Login";
 import Register from "./components/authentication/Register";
 import { Toaster } from "react-hot-toast";
 import Contact from "./components/Contactus/Contact";
+import About from "./components/AboutUs/About";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </Router>
       <Toaster />
