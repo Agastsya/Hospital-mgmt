@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "./MedicineInventory.css"; // Use for custom scrollbar styles
+import "./MedicineInventory.css";
 import axios from "axios";
 import toast from "react-hot-toast";
 
 const MedicineInventory = () => {
   const [otpPage, setOtpPage] = useState(false);
-  // Demo data for medicines inventory
   const [inventory, setInventory] = useState([
     {
       id: 1,
@@ -23,7 +22,6 @@ const MedicineInventory = () => {
       minStock: 50,
       expiry: "2026-05-10",
     },
-    // Add more data to demonstrate scrolling
     { id: 5, name: "Aspirin", stock: 25, minStock: 5, expiry: "2024-12-12" },
     { id: 6, name: "Vitamin C", stock: 40, minStock: 15, expiry: "2025-07-01" },
     {
@@ -55,9 +53,6 @@ const MedicineInventory = () => {
 
   const triggerReorder = async (items) => {
     toast.success(`Reorder placed for ${items.name}!`);
-    // setOtpPage(true);
-    console.log(items);
-    // api call to send email
     const config = {
       url: "http://localhost:5000/api/auth/sendotp",
       data: items,
@@ -67,23 +62,22 @@ const MedicineInventory = () => {
       },
     };
     const response = await axios(config);
-
     console.log(response.data);
   };
 
   return (
-    <div className="medicine-inventory px-4 py-6">
-      <h3 className="text-xl font-semibold mb-4">Medicine Inventory</h3>
-      <div className="overflow-auto">
-        <table className="min-w-full table-auto border-collapse bg-white shadow-md rounded-lg overflow-hidden">
+    <div className="medicine-inventory">
+      <h3 className="title">Medicine Inventory</h3>
+      <div className="table-container">
+        <table>
           <thead>
-            <tr className="bg-blue-50 text-left">
-              <th className="px-4 py-2">Medicine</th>
-              <th className="px-4 py-2">Stock</th>
-              <th className="px-4 py-2">Minimum Stock</th>
-              <th className="px-4 py-2">Expiry Date</th>
-              <th className="px-4 py-2">Status</th>
-              <th className="px-4 py-2">Action</th>
+            <tr>
+              <th>Medicine</th>
+              <th>Stock</th>
+              <th>Min Stock</th>
+              <th>Expiry Date</th>
+              <th>Status</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -96,42 +90,25 @@ const MedicineInventory = () => {
               return (
                 <tr
                   key={item.id}
-                  className={`hover:bg-gray-100 ${
-                    needsReorder
-                      ? "bg-red-50"
-                      : nearExpiry
-                      ? "bg-yellow-50"
-                      : ""
+                  className={`row ${
+                    needsReorder ? "low-stock" : nearExpiry ? "near-expiry" : ""
                   }`}
                 >
-                  <td className="px-4 py-2">{item.name}</td>
-
-                  {/* Stock with custom scroll */}
-                  <td className="px-4 py-2">
-                    <div className="max-h-16 overflow-y-auto scrollbar-thumb-rounded scrollbar-thumb-blue-500 scrollbar-track-gray-200">
-                      {item.stock}
-                    </div>
-                  </td>
-
-                  {/* Minimum Stock with custom scroll */}
-                  <td className="px-4 py-2">
-                    <div className="max-h-16 overflow-y-auto scrollbar-thumb-rounded scrollbar-thumb-blue-500 scrollbar-track-gray-200">
-                      {item.minStock}
-                    </div>
-                  </td>
-
-                  <td className="px-4 py-2">{item.expiry}</td>
-                  <td className="px-4 py-2">
+                  <td>{item.name}</td>
+                  <td>{item.stock}</td>
+                  <td>{item.minStock}</td>
+                  <td>{item.expiry}</td>
+                  <td>
                     {needsReorder
                       ? "Low Stock"
                       : nearExpiry
                       ? "Near Expiry"
                       : "Sufficient Stock"}
                   </td>
-                  <td className="px-4 py-2">
+                  <td>
                     {(needsReorder || nearExpiry) && (
                       <button
-                        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded"
+                        className="reorder-btn"
                         onClick={() => triggerReorder(item)}
                       >
                         Reorder
@@ -144,7 +121,7 @@ const MedicineInventory = () => {
           </tbody>
         </table>
       </div>
-      {otpPage ? <div>OPT</div> : ""}
+      {otpPage && <div className="otp-popup">OPT</div>}
     </div>
   );
 };

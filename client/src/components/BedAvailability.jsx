@@ -32,33 +32,90 @@ export default function BedAvailability() {
       const bedData = [
         {
           id: 1,
-          hospital: "City Hospital",
+          hospital: "Sushruta Hospital",
           department: "Emergency",
           available: 5,
           status: "Available",
         },
         {
           id: 2,
-          hospital: "Metro Hospital",
+          hospital: "Apollo Hospitals",
           department: "Surgery",
           available: 0,
           status: "Critical",
         },
         {
           id: 3,
-          hospital: "Greenwood Clinic",
+          hospital: "Manipal Hospital",
           department: "ICU",
           available: 2,
           status: "Low Stock",
         },
         {
           id: 4,
-          hospital: "Bright Hospital",
+          hospital: "Fortis Healthcare",
           department: "General",
           available: 10,
           status: "Available",
         },
+        {
+          id: 5,
+          hospital: "Max Super Speciality Hospital",
+          department: "Orthopedics",
+          available: 8,
+          status: "Available",
+        },
+        {
+          id: 6,
+          hospital: "AIIMS Delhi",
+          department: "Cardiology",
+          available: 3,
+          status: "Low Stock",
+        },
+        {
+          id: 7,
+          hospital: "Kokilaben Dhirubhai Ambani Hospital",
+          department: "Neurology",
+          available: 6,
+          status: "Available",
+        },
+        {
+          id: 8,
+          hospital: "Narayana Health",
+          department: "Pediatrics",
+          available: 4,
+          status: "Critical",
+        },
+        {
+          id: 9,
+          hospital: "Sri Ramachandra Medical Centre",
+          department: "Radiology",
+          available: 7,
+          status: "Available",
+        },
+        {
+          id: 10,
+          hospital: "Lilavati Hospital",
+          department: "Maternity",
+          available: 2,
+          status: "Low Stock",
+        },
+        {
+          id: 11,
+          hospital: "Jaypee Hospital",
+          department: "Oncology",
+          available: 5,
+          status: "Available",
+        },
+        {
+          id: 12,
+          hospital: "Medanta - The Medicity",
+          department: "Gastroenterology",
+          available: 9,
+          status: "Available",
+        },
       ];
+
       setBeds(bedData);
     };
 

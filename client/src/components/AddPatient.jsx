@@ -31,10 +31,12 @@ const AddPatient = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-6 text-center">Add Patient</h2>
+    <div className="max-w-3xl mx-auto mt-12 bg-white p-8 rounded-lg shadow-lg">
+      <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">
+        Add Patient
+      </h2>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-6">
         {/* Name Input */}
         <input
           type="text"
@@ -42,7 +44,7 @@ const AddPatient = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
 
         {/* Age Input */}
@@ -52,7 +54,7 @@ const AddPatient = () => {
           value={age}
           onChange={(e) => setAge(e.target.value)}
           required
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
 
         {/* Symptoms Input */}
@@ -62,7 +64,7 @@ const AddPatient = () => {
           value={symptoms}
           onChange={(e) => setSymptoms(e.target.value)}
           required
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
 
         {/* Priority Category Input */}
@@ -72,7 +74,7 @@ const AddPatient = () => {
           value={priorityCategory}
           onChange={(e) => setPriorityCategory(e.target.value)}
           required
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
 
         {/* Description Textarea */}
@@ -80,16 +82,16 @@ const AddPatient = () => {
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          rows="4"
+          rows="6"
           required
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none overflow-y-auto max-h-32 scrollbar-thumb-blue-500 scrollbar-track-gray-200"
+          className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white resize-none"
         />
 
         {/* Submit Button */}
         <input
           type="submit"
           value="Add Patient"
-          className="w-full bg-blue-500 text-white font-semibold py-3 rounded-lg cursor-pointer hover:bg-blue-600 transition duration-300"
+          className="w-full bg-blue-500 text-white font-semibold py-4 rounded-lg cursor-pointer hover:bg-blue-600 transition duration-300"
         />
       </form>
     </div>

@@ -1,68 +1,119 @@
+/* Main container styles */
 .queue-status-container {
-  padding: 20px;
   max-width: 1200px;
   margin: auto;
-  font-family: Arial, sans-serif;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to right, #f0f4f8, #cce7ff);
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-.search-box {
-  width: calc(100% - 24px);
-  padding: 12px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #333;
+  text-transform: uppercase;
+  margin-bottom: 30px;
 }
 
+.search-box,
 .filter-dropdown {
-  width: calc(100% - 24px);
+  width: 100%;
   padding: 12px;
   margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.patientProfile {
-  display: flex;
-  align-items: center;
-  padding: 200px;
-  margin-bottom: 10px;
   border-radius: 8px;
-  color: #fff;
-  font-family: Arial, sans-serif;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 100%;
+  border: 1px solid #ccc;
   box-sizing: border-box;
+  background-color: #fff;
+  font-size: 1rem;
 }
 
-.svgContainer {
-  margin-right: 15px;
+.search-box:focus,
+.filter-dropdown:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+}
+
+.card-container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.patientProfile div {
-  flex: 1;
+/* Card styles */
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  transition: all 0.3s ease;
 }
 
-.patientProfile p {
-  margin: 0;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.patientProfile p:first-of-type {
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-size: 1.2rem;
+}
+
+.card-content {
+  padding: 20px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.card-content strong {
   font-weight: bold;
-  margin-bottom: 5px;
+}
+
+/* Priority colors */
+.bg-red-600 {
+  background-color: #f56565;
+}
+
+.bg-yellow-500 {
+  background-color: #fbd38d;
+}
+
+.bg-green-500 {
+  background-color: #48bb78;
+}
+
+/* Hover effects for cards */
+.card:hover .card-header {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Badge styling */
+.badge {
+  background-color: #007bff;
+  padding: 5px 10px;
+  color: white;
+  font-weight: bold;
+  border-radius: 15px;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .patientProfile {
-    flex-direction: column;
-    align-items: flex-start;
+  .queue-status-container {
+    padding: 10px;
   }
 
-  .svgContainer {
-    margin-bottom: 10px;
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .card-container {
+    gap: 10px;
   }
 }
