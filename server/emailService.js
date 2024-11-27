@@ -6,13 +6,13 @@ const sendEmail = async (medicine) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
+      user: "shubham.goel@tech-bridge.biz",
+      pass: "627312@SbG",
     },
   });
 
   const mailOptions = {
-    from: process.env.EMAIL_USER,
+    from: "shubham.goel@tech-bridge.biz",
     to: "agastsya007@gmail.com",
     subject: `Reorder Needed for ${medicine.name}`,
     text: `The stock for ${medicine.name} is zero. Please reorder it.`,
