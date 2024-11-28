@@ -18,6 +18,7 @@ exports.addPatient = async (req, res) => {
       age,
       symptoms,
       priorityCategory,
+      description,
     });
 
     const patient = await newPatient.save();

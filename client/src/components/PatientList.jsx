@@ -51,6 +51,7 @@ const PatientsList = () => {
                 {patient.name} - {patient.age} - {patient.priorityCategory}
               </p>
               <p>Symptoms: {patient.symptoms}</p>
+              <p>Description :{patient.description}</p>
             </div>
           </div>
         ))

@@ -1,20 +1,19 @@
-
-import React, { useState } from 'react';
-import '../components/PatientHealthRecord.css';
+import { useState } from "react";
+import "../components/PatientHealthRecord.css";
 
 const PatientHealthRecord = () => {
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [visitHistory, setVisitHistory] = useState([
-    'Annual Checkup - June 2023',
-    'Emergency Visit - January 2024'
+    "Annual Checkup - June 2023",
+    "Emergency Visit - January 2024",
   ]);
   const [prescriptions, setPrescriptions] = useState([
-    'Medication A - 30 days',
-    'Medication B - 14 days'
+    "Medication A - 30 days",
+    "Medication B - 14 days",
   ]);
   const [file, setFile] = useState(null);
-  const [newVisit, setNewVisit] = useState('');
-  const [newPrescription, setNewPrescription] = useState('');
+  const [newVisit, setNewVisit] = useState("");
+  const [newPrescription, setNewPrescription] = useState("");
 
   const handleFileUpload = (event) => {
     const newFile = event.target.files[0];
@@ -29,25 +28,25 @@ const PatientHealthRecord = () => {
       alert(`File ${file.name} uploaded successfully!`);
       setFile(null);
     } else {
-      alert('Please select a file to upload.');
+      alert("Please select a file to upload.");
     }
   };
 
   const handleAddVisit = () => {
     if (newVisit) {
       setVisitHistory([...visitHistory, newVisit]);
-      setNewVisit('');
+      setNewVisit("");
     } else {
-      alert('Please enter visit details.');
+      alert("Please enter visit details.");
     }
   };
 
   const handleAddPrescription = () => {
     if (newPrescription) {
       setPrescriptions([...prescriptions, newPrescription]);
-      setNewPrescription('');
+      setNewPrescription("");
     } else {
-      alert('Please enter prescription details.');
+      alert("Please enter prescription details.");
     }
   };
 
@@ -57,10 +56,7 @@ const PatientHealthRecord = () => {
 
       {/* File Upload Section */}
       <div className="file-upload">
-        <input
-          type="file"
-          onChange={(e) => setFile(e.target.files[0])}
-        />
+        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
         <button onClick={handleSubmitFile} className="upload-button">
           Upload Record
         </button>
@@ -81,9 +77,7 @@ const PatientHealthRecord = () => {
         <h3>Previous Visit History</h3>
         <ul>
           {visitHistory.length > 0 ? (
-            visitHistory.map((visit, index) => (
-              <li key={index}>{visit}</li>
-            ))
+            visitHistory.map((visit, index) => <li key={index}>{visit}</li>)
           ) : (
             <li>No visit history available.</li>
           )}

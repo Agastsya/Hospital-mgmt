@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const AddPatient = () => {
   const [name, setName] = useState("");
@@ -25,8 +26,10 @@ const AddPatient = () => {
       setSymptoms("");
       setPriorityCategory("");
       setDescription("");
+      toast.success("Added Patient Successfully");
     } catch (error) {
       console.error("Error adding patient:", error);
+      toast.success(error);
     }
   };
 

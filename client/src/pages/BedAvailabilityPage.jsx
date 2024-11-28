@@ -1,6 +1,5 @@
-import React from 'react';
-import BedAvailability from '../components/BedAvailability';
-import './BedAvailabilityPage.css';
+import BedAvailability from "../components/BedAvailability";
+import "./BedAvailabilityPage.css";
 
 const BedAvailabilityPage = () => {
   return (

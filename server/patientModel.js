@@ -25,6 +25,10 @@ const patientSchema = new mongoose.Schema({
     type: String,
     default: () => new Date().toLocaleTimeString(),
   },
+  description: {
+    type: String,
+    required: false,
+  },
 });
 
 module.exports = mongoose.model("Patient", patientSchema);
