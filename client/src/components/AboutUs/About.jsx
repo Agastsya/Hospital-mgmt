@@ -25,7 +25,7 @@ function About() {
         </div>
         <div className="about-image-container">
           <img
-            src="https://via.placeholder.com/500x400.png?text=Our+Team"
+            src="https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg?cs=srgb&dl=pexels-hillaryfox-1595385.jpg&fm=jpg"
             alt="Our Team"
             className="about-image"
           />
